@@ -60,6 +60,11 @@ func buildValidatingWebhookCfg(namespace string) *admregv1.ValidatingWebhookConf
 						},
 					},
 				},
+				NamespaceSelector: &metav1.LabelSelector{
+					MatchLabels: map[string]string{
+						"app.kubernetes.io/component": "workspaces-namespace",
+					},
+				},
 				AdmissionReviewVersions: []string{"v1beta1", "v1"},
 			},
 			{
